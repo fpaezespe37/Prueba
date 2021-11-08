@@ -1,0 +1,4 @@
+include ':ksoap2-android-3.6.2'
+include ':carwashdll-release'
+include ':app'
+rootProject.name = "LavadoAutomovil"

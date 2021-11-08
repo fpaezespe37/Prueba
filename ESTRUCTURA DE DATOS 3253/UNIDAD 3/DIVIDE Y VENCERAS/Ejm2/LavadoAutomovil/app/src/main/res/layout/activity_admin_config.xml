@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminConfig">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/didact_gothic"
+        android:text="CONFIGURACIONES "
+        android:textAllCaps="true"
+        android:textColor="#101010"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        app:srcCompat="@drawable/logo_app" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/didact_gothic"
+        android:gravity="center_horizontal"
+        android:text="Modificar Datos Personales"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/didact_gothic"
+        android:gravity="center_horizontal"
+        android:text="Modificar Datos Servicio"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+    <Button
+        android:id="@+id/btnGuardarCambios"
+        android:layout_width="299dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/boton_redondeado"
+        android:backgroundTint="#1E4078"
+        android:fontFamily="@font/padauk"
+        android:text="GUARDAR CAMBIOS"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:cornerRadius="15dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="299dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/boton_redondeado"
+        android:backgroundTint="#1E4078"
+        android:fontFamily="@font/padauk"
+        android:text="CANCELAR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:cornerRadius="15dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardarCambios" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="310dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/boton_redondeado"
+        android:ems="8"
+        android:fontFamily="@font/nobile"
+        android:gravity="center_vertical"
+        android:hint="Editar Correo"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="310dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="316dp"
+        android:background="@drawable/boton_redondeado"
+        android:ems="8"
+        android:fontFamily="@font/nobile"
+        android:gravity="center_vertical"
+        android:hint="Editar Contraseña"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/boton_redondeado"
+        android:ems="8"
+        android:fontFamily="@font/nobile"
+        android:gravity="center_vertical"
+        android:hint="Hora de Servicio"
+        android:inputType="text|number"
+        android:textAlignment="center"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

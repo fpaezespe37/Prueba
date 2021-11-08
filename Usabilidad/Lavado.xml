@@ -1,0 +1,116 @@
+<?xmp version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Registro Actividades/Lavado">
+    <Task Identifier="Registro Actividades/Lavado" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Platform>Pda</Platform>
+        <Platform>Desktop</Platform>
+        <Platform>Cellphone</Platform>
+        <SubTask>
+            <Task Identifier="RegistroCliente" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Pda</Platform>
+                <Platform>Desktop</Platform>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Registro Actividades/Lavado"/>
+                <SiblingRight name="InicioSesión"/>
+                <Object name="Nombre" class="String"/>
+                <Object name="Apellido" class="String"/>
+                <Object name="CI" class="String"/>
+                <Object name="Teléfono" class="String"/>
+                <Object name="Contraseña" class="String"/>
+                <SubTask>
+                    <Task Identifier="RegistrarDatos" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Parallel"/>
+                        <Parent name="RegistroCliente"/>
+                        <SiblingRight name="ValidaciónDatos"/>
+                        <Object name="Nombre" class="String"/>
+                        <Object name="Apellido" class="String"/>
+                        <Object name="CI" class="String"/>
+                        <Object name="Teléfono" class="String"/>
+                        <Object name="Contraseña" class="String"/>
+                    </Task>
+                    <Task Identifier="ValidaciónDatos" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="RegistroCliente"/>
+                        <SiblingLeft name="RegistrarDatos"/>
+                        <Object name="Nombre" class="String"/>
+                        <Object name="CI" class="String"/>
+                        <Object name="Contraseña" class="String"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="InicioSesión" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Pda</Platform>
+                <Platform>Desktop</Platform>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SuspendResume"/>
+                <Parent name="Registro Actividades/Lavado"/>
+                <SiblingLeft name="RegistroCliente"/>
+                <SiblingRight name="ReservarTurno"/>
+                <SubTask>
+                    <Task Identifier="Login" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Parallel"/>
+                        <Parent name="InicioSesión"/>
+                        <SiblingRight name="ValidarLogin"/>
+                        <Object name="CI" class="String"/>
+                        <Object name="Contraseña" class="String"/>
+                    </Task>
+                    <Task Identifier="ValidarLogin" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="InicioSesión"/>
+                        <SiblingLeft name="Login"/>
+                        <Object name="CI" class="String"/>
+                        <Object name="Contraseña" class="String"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="ReservarTurno" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Pda</Platform>
+                <Platform>Desktop</Platform>
+                <Platform>Cellphone</Platform>
+                <Parent name="Registro Actividades/Lavado"/>
+                <SiblingLeft name="InicioSesión"/>
+                <SubTask>
+                    <Task Identifier="AgendarCita" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Parallel"/>
+                        <Parent name="ReservarTurno"/>
+                        <SiblingRight name="GuardarCita"/>
+                        <Object name="Fecha" class="Date"/>
+                        <Object name="Hora" class="Time"/>
+                    </Task>
+                    <Task Identifier="GuardarCita" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Pda</Platform>
+                        <Platform>Desktop</Platform>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="ReservarTurno"/>
+                        <SiblingLeft name="AgendarCita"/>
+                        <Object name="Fecha" class="Date"/>
+                        <Object name="Hora" class="Time"/>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>

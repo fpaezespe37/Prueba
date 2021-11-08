@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1610458627 source:c:\users\user\documents\espe nov 2020 - abr 2021\estructura de datos 3253\prueba\ccc\main.cpp
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	<iostream>
+

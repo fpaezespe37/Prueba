@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Task_MovilacionBus">
+    <Task Identifier="Task_MovilacionBus" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Platform>Cellphone</Platform>
+        <SubTask>
+            <Task Identifier="Pensar_Destino" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingRight name="Movilizarse_a_la_Parada"/>
+                <Object name="Usuario"/>
+                <Object name="Pasaje"/>
+                <SubTask>
+                    <Task Identifier="Plantear_Ruta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Desktop</Platform>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Pensar_Destino"/>
+                        <SiblingRight name="DecidirLineas"/>
+                        <Object name="Usuario" class="String"/>
+                        <Object name="Destino" class="Position"/>
+                        <SubTask>
+                            <Task Identifier="Revisar_Mapas" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Type>None</Type>
+<Platform>Cellphone</Platform>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Plantear_Ruta"/>
+<SiblingRight name="EstimarTiempoParada"/>
+                            </Task>
+                            <Task Identifier="EstimarTiempoParada" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Platform>Cellphone</Platform>
+<TemporalOperator name="Parallel"/>
+<Parent name="Plantear_Ruta"/>
+<SiblingLeft name="Revisar_Mapas"/>
+<SiblingRight name="EstimarTiempoViaje"/>
+                            </Task>
+                            <Task Identifier="EstimarTiempoViaje" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Platform>Cellphone</Platform>
+<Parent name="Plantear_Ruta"/>
+<SiblingLeft name="EstimarTiempoParada"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="DecidirLineas" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Type>None</Type>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Pensar_Destino"/>
+                        <SiblingLeft name="Plantear_Ruta"/>
+                        <SiblingRight name="ArmarPresupuesto"/>
+                    </Task>
+                    <Task Identifier="ArmarPresupuesto" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Type>None</Type>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Pensar_Destino"/>
+                        <SiblingLeft name="DecidirLineas"/>
+                        <SiblingRight name="GuardarEfectivo"/>
+                    </Task>
+                    <Task Identifier="GuardarEfectivo" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Type>None</Type>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="Pensar_Destino"/>
+                        <SiblingLeft name="ArmarPresupuesto"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Movilizarse_a_la_Parada" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Pensar_Destino"/>
+                <SiblingRight name="Esperar_Bus"/>
+            </Task>
+            <Task Identifier="Esperar_Bus" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Movilizarse_a_la_Parada"/>
+                <SiblingRight name="Bus_Cerca"/>
+            </Task>
+            <Task Identifier="Bus_Cerca" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Esperar_Bus"/>
+                <SiblingRight name="Bus_se_detiene"/>
+                <SubTask>
+                    <Task Identifier="Señas" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="Bus_Cerca"/>
+                        <SiblingRight name="SentarseNuevamente"/>
+                    </Task>
+                    <Task Identifier="SentarseNuevamente" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="Bus_Cerca"/>
+                        <SiblingLeft name="Señas"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Bus_se_detiene" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Bus_Cerca"/>
+                <SiblingRight name="Subir_al_bus"/>
+            </Task>
+            <Task Identifier="Subir_al_bus" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Bus_se_detiene"/>
+                <SiblingRight name="Pagar_pasaje"/>
+            </Task>
+            <Task Identifier="Pagar_pasaje" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Subir_al_bus"/>
+                <SiblingRight name="Ingresar_al_bus"/>
+            </Task>
+            <Task Identifier="Ingresar_al_bus" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Pagar_pasaje"/>
+                <SiblingRight name="Identificar_asiento"/>
+            </Task>
+            <Task Identifier="Identificar_asiento" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Ingresar_al_bus"/>
+                <SiblingRight name="Esperar_para_llegar_al_destino"/>
+                <SubTask>
+                    <Task Identifier="TomarAsient" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="Identificar_asiento"/>
+                        <SiblingRight name="QuedarseParado"/>
+                    </Task>
+                    <Task Identifier="QuedarseParado" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="Identificar_asiento"/>
+                        <SiblingLeft name="TomarAsient"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Esperar_para_llegar_al_destino" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Identificar_asiento"/>
+                <SiblingRight name="En la parada"/>
+            </Task>
+            <Task Identifier="En la parada" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Esperar_para_llegar_al_destino"/>
+                <SiblingRight name="Dirigirse a la puerta"/>
+                <SubTask>
+                    <Task Identifier="Levantarse" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <TemporalOperator name="Choice"/>
+                        <Parent name="En la parada"/>
+                        <SiblingRight name="Estaba_levantado"/>
+                    </Task>
+                    <Task Identifier="Estaba_levantado" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Platform>Cellphone</Platform>
+                        <Parent name="En la parada"/>
+                        <SiblingLeft name="Levantarse"/>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Dirigirse a la puerta" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Type>None</Type>
+                <Platform>Cellphone</Platform>
+                <TemporalOperator name="SequentialEnabling"/>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="En la parada"/>
+                <SiblingRight name="Bajar_unidad"/>
+            </Task>
+            <Task Identifier="Bajar_unidad" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Platform>Cellphone</Platform>
+                <Parent name="Task_MovilacionBus"/>
+                <SiblingLeft name="Dirigirse a la puerta"/>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>
